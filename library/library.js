@@ -5,9 +5,6 @@ function Book(title, author, pages, read) {
   this.author = author,
   this.pages = pages,
   this.read = read;
-  // this.info = function () {
-  //   return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
-  // }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -44,3 +41,10 @@ function render(myLibrary) {
 }
 
 render(myLibrary);
+
+const addButton = document.querySelector('.add-book');
+const modal = document.querySelector('.modal');
+const closeButton = modal.querySelector('.close');
+
+addButton.addEventListener('click', () => modal.classList.add('modal--visible'));
+closeButton.addEventListener('click', () => modal.classList.remove('modal--visible'));
