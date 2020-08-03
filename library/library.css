@@ -17,7 +17,7 @@ body {
 }
 
 .card {
-  flex-basis: calc(100%/5 - 10.666px);
+  flex-basis: calc(100%/5 - 12.8px);
   /* margin: 24px; */
   border: 2px solid lightgray;
   border-radius: 4px;
@@ -26,7 +26,7 @@ body {
   margin-right: 16px;
 }
 
-.card:nth-child(6n+6) {
+.card:nth-child(5n+5) {
   margin-right: 0;
 }
 
@@ -37,15 +37,20 @@ body {
   padding: 16px;
 }
 
-.close {
-
+.book-form {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .book-form h2 {
   margin: 8px 0 24px;
+  flex: 1 0 auto;
 }
 
+
+
 .book-form__items {
+  flex-basis: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -85,12 +90,12 @@ input[type="checkbox"] {
   margin-right: 8px;
 }
 
-@supports (-webkit-text-stroke: 1px black) {
+/* @supports (-webkit-text-stroke: 1px black) {
   h2 {
     -webkit-text-stroke: 1px black;
     -webkit-text-fill-color: white;
   }
-}
+} */
 
 .modal {
   display: none; /* Hidden by default */
@@ -105,9 +110,15 @@ input[type="checkbox"] {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+.book-form__button {
+  flex: 0 0 32px;
+}
+
 .modal__content {
+  display: flex;
+  flex-direction: column;
   background-color: #fefefe;
-  margin: 5% auto; 15% from the top and centered */
+  margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 30%; /* Could be more or less, depending on screen size */
@@ -117,8 +128,36 @@ input[type="checkbox"] {
   display: block;
 }
 
+button {
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .close {
-  border: 1px solid red;
+  /* font-size: 32px;
+  line-height: 1;
+  font-weight: bold;
+  border: none;
+  background-color: orangered;
+  color: white;
+  border-radius: 50%;
+  padding: 1px 7px 0 6px; */
+}
+
+.close:hover {
+  /* background-color: #e63e00; */
+}
+
+.submit {
+  background-color: olivedrab;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  padding: 6px 15px;
   border-radius: 4px;
-  padding: 8px;
+}
+
+.submit:hover {
+  background-color: #5c7a1e;
 }

@@ -11,19 +11,18 @@
     <div class="bookshelf">
       <button type="button" class="add-book card">+ add new book</button>
     </div>
-
-
-
-
   </div>
 
   <div class="modal">
     <div class="modal__content">
 
-      <button type="button" class="close">&times;</button>
+
 
       <form class="book-form">
         <h2>Add a book to the library</h2>
+        <div class="book-form__button">
+          <button type="button" class="close">&times;</button>
+        </div>
         <ul class="book-form__items">
           <li class="book-form__field">
             <label for="title">Title</label>
@@ -42,7 +41,7 @@
             <label for="read_state">I have read this book</label>
           </li>
           <li>
-            <button type="submit">Submit</button>
+            <button class="submit" type="submit">Submit</button>
           </li>
         </ul>
       </form>
