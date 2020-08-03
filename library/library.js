@@ -18,9 +18,9 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 
-addBookToLibrary('The Hobbit', 'J.R.R Tolkien', 295, 'not read');
-addBookToLibrary('Northern Lights', 'Philip Pullman', 399, 'read');
-addBookToLibrary('The Handmaid\'s Tale', 'Margaret Attwood', 311, 'not read');
+addBookToLibrary('The Hobbit', 'J.R.R Tolkien', 295, true);
+addBookToLibrary('Northern Lights', 'Philip Pullman', 399, true);
+addBookToLibrary('The Handmaid\'s Tale', 'Margaret Attwood', 311, false);
 
 function processArray(element, index) {
   const title = element.title;
@@ -35,8 +35,6 @@ function processArray(element, index) {
 function render(myLibrary) {
   myLibrary.forEach(processArray);
 }
-
-//
 
 function renderNewBook(title, author, pages, read, index) {
   const book = document.createElement('div');
@@ -58,11 +56,30 @@ function renderNewBook(title, author, pages, read, index) {
   bookAuthor.textContent = `By ${author}`;
   const bookPages = document.createElement('p');
   bookPages.textContent = `Pages: ${pages}`;
+  const checkRead = document.createElement('input');
+  checkRead.type = "checkbox";
+  console.dir(checkRead);
+  let readText = '';
+  if (read === true) {
+    checkRead.checked = true;
+    readText = 'Read';
+  } else {
+    readText = 'Unread';
+  }
   const bookRead = document.createElement('p');
-  bookRead.textContent = read;
-  book.append(bookTitle, bookAuthor, bookPages, bookRead);
+  bookRead.textContent = readText;
+  book.append(bookTitle, bookAuthor, bookPages, checkRead, bookRead);
   bookshelf.append(book);
-  // cardCloseButtons();
+  function toggleText(event) {
+    if (event.target.checked) {
+      bookRead.textContent = 'Read';
+      myLibrary[index].read = true;
+    } else {
+      bookRead.textContent = 'Unread';
+      myLibrary[index].read = false;
+    }
+  }
+  checkRead.addEventListener('change', toggleText);
 }
 
 function submitBook(event) {
