@@ -91,9 +91,9 @@ function submitBook(event) {
   let read =  document.getElementById('read_state').value;
 
   if (read === 'on') {
-    read = 'Read';
+    read = true;
   } else {
-    read = 'Unread';
+    read = false;
   }
 
   form.reset();
@@ -102,11 +102,6 @@ function submitBook(event) {
   const index = myLibrary.length - 1;
   renderNewBook(title, author, pages, read, index);
 }
-
-function toggleRead() {
-
-}
-
 
 render(myLibrary);
 
