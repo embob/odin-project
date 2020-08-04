@@ -48,6 +48,7 @@ function renderNewBook(title, author, pages, read, index) {
   button.addEventListener('click', () => {
     button.closest('.card').remove();
     myLibrary.splice(index, 1);
+    localStorage.setItem("banana", JSON.stringify(myLibrary));
   });
 
   const bookTitle = document.createElement('h2');
@@ -55,10 +56,9 @@ function renderNewBook(title, author, pages, read, index) {
   const bookAuthor = document.createElement('p');
   bookAuthor.textContent = `By ${author}`;
   const bookPages = document.createElement('p');
-  bookPages.textContent = `Pages: ${pages}`;
+  bookPages.textContent = `${pages} pages`;
   const checkRead = document.createElement('input');
   checkRead.type = "checkbox";
-  console.dir(checkRead);
   let readText = '';
   if (read === true) {
     checkRead.checked = true;
@@ -70,6 +70,7 @@ function renderNewBook(title, author, pages, read, index) {
   bookRead.textContent = readText;
   book.append(bookTitle, bookAuthor, bookPages, checkRead, bookRead);
   bookshelf.append(book);
+
   function toggleText(event) {
     if (event.target.checked) {
       bookRead.textContent = 'Read';
@@ -88,22 +89,22 @@ function submitBook(event) {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
-  let read =  document.getElementById('read_state').value;
-
-  if (read === 'on') {
-    read = true;
-  } else {
-    read = false;
-  }
+  let read =  document.getElementById('read_state').checked;
 
   form.reset();
   modal.classList.remove('modal--visible');
   addBookToLibrary(title, author, pages, read);
   const index = myLibrary.length - 1;
   renderNewBook(title, author, pages, read, index);
+  localStorage.setItem("banana", JSON.stringify(myLibrary));
 }
 
-render(myLibrary);
+var retrievedData = localStorage.getItem("banana");
+let myLibrary2 = JSON.parse(retrievedData);
+
+render(myLibrary2);
+
+console.log(myLibrary2);
 
 addButton.addEventListener('click', () => modal.classList.add('modal--visible'));
 closeButton.addEventListener('click', () => modal.classList.remove('modal--visible'));
