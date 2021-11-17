@@ -1,0 +1,36 @@
+.container {
+  padding: 50px;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  width: 610px;
+  height: 610px;
+  background-color: #222222;
+  margin: 0 auto;
+
+}
+
+.board__square {
+  flex: 0 0 200px;
+  height: 200px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 200px;
+  text-align: center;
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.board--turn-x .board__square:hover {
+  background: white no-repeat center/80%  url(img/x.jpg)
+}
+
+
+.board--turn-o .board__square:hover {
+  background: white no-repeat center/80%  url(img/o.jpg)
+}
